@@ -21,7 +21,14 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'database' => [
+        'table' => [
+            'prefix' => 'bonsaicms_metamodel_',
+            'suffix' => '',
+        ],
+    ],
 ];
+
 ```
 
 ### Migrations

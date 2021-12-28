@@ -18,7 +18,7 @@ class Entity extends Model
      */
     public function getTable(): string
     {
-        return config('metamodel.database.table.prefix').'entities'.config('metamodel.database.table.suffix');
+        return config('bonsaicms-metamodel.database.table.prefix').'entities'.config('bonsaicms-metamodel.database.table.suffix');
     }
 
     /**

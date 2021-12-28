@@ -18,7 +18,7 @@ class Attribute extends Model
      */
     public function getTable(): string
     {
-        return config('metamodel.database.table.prefix').'attributes'.config('metamodel.database.table.suffix');
+        return config('bonsaicms-metamodel.database.table.prefix').'attributes'.config('bonsaicms-metamodel.database.table.suffix');
     }
 
     /**

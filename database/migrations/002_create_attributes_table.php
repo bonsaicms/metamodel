@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(config('metamodel.database.table.prefix').'attributes'.config('metamodel.database.table.suffix'), function (Blueprint $table) {
+        Schema::create(config('bonsaicms-metamodel.database.table.prefix').'attributes'.config('bonsaicms-metamodel.database.table.suffix'), function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('column');
             $table->timestamps();
 
             $table->foreignId('entity_id')
-                ->constrained(config('metamodel.database.table.prefix').'entities'.config('metamodel.database.table.suffix'))
+                ->constrained(config('bonsaicms-metamodel.database.table.prefix').'entities'.config('bonsaicms-metamodel.database.table.suffix'))
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
         });
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('metamodel.database.table.prefix').'attributes'.config('metamodel.database.table.suffix'));
+        Schema::dropIfExists(config('bonsaicms-metamodel.database.table.prefix').'attributes'.config('bonsaicms-metamodel.database.table.suffix'));
     }
 };
