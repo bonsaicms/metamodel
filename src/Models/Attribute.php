@@ -2,6 +2,7 @@
 
 namespace BonsaiCms\Metamodel\Models;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +12,11 @@ class Attribute extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'nullable' => 'boolean',
+        'default' => 'json',
+    ];
+
     /**
      * Get the table associated with the model.
      *
@@ -18,7 +24,7 @@ class Attribute extends Model
      */
     public function getTable(): string
     {
-        return config('bonsaicms-metamodel.database.table.prefix').'attributes'.config('bonsaicms-metamodel.database.table.suffix');
+        return Config::get('bonsaicms-metamodel.attributeTableName');
     }
 
     /**

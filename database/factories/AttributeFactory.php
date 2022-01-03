@@ -22,11 +22,17 @@ class AttributeFactory extends Factory
      */
     public function definition(): array
     {
-        $name = $this->faker->unique()->words(rand(1, 3));
+        $name = $this->faker->unique()->words(rand(1, 3), true);
 
         return [
             'name' => Str::title($name),
             'column' => Str::snake($name),
+            'type' => $this->faker->randomElement([
+                // TODO
+                'string',
+                'integer',
+                'boolean',
+            ]),
         ];
     }
 }

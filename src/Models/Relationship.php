@@ -4,11 +4,11 @@ namespace BonsaiCms\Metamodel\Models;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use BonsaiCms\Metamodel\Database\Factories\EntityFactory;
+use BonsaiCms\Metamodel\Database\Factories\RelationshipFactory;
 
-class Entity extends Model
+class Relationship extends Model
 {
     use HasFactory;
 
@@ -19,7 +19,7 @@ class Entity extends Model
      */
     public function getTable(): string
     {
-        return Config::get('bonsaicms-metamodel.entityTableName');
+        return Config::get('bonsaicms-metamodel.relationshipTableName');
     }
 
     /**
@@ -29,45 +29,40 @@ class Entity extends Model
      */
     protected static function newFactory()
     {
-        return EntityFactory::new();
+        return RelationshipFactory::new();
     }
 
     /*
      * Relationships
      */
 
-    public function attributes(): HasMany
+    public function leftEntity(): BelongsTo
     {
-        return $this->hasMany(Attribute::class);
+        return $this->belongsTo(Entity::class, 'left_entity_id');
     }
 
-    public function leftRelationships(): HasMany
+    public function rightEntity(): BelongsTo
     {
-        return $this->hasMany(Relationship::class, 'left_entity_id');
-    }
-
-    public function rightRelationships(): HasMany
-    {
-        return $this->hasMany(Relationship::class, 'right_entity_id');
+        return $this->belongsTo(Entity::class, 'right_entity_id');
     }
 
     /*
      * Getters
      */
 
-    public function getRealTableNameAttribute()
+    public function getRealPivotTableNameAttribute()
     {
         return
             Config::get('bonsaicms-metamodel.generatedTablePrefix').
-            $this->getAttribute('table').
+            $this->getAttribute('pivot_table').
             Config::get('bonsaicms-metamodel.generatedTableSuffix');
     }
 
-    public function getOriginalRealTableNameAttribute()
+    public function getOriginalRealPivotTableNameAttribute()
     {
         return
             Config::get('bonsaicms-metamodel.generatedTablePrefix').
-            $this->getOriginal('table').
+            $this->getOriginal('pivot_table').
             Config::get('bonsaicms-metamodel.generatedTableSuffix');
     }
 }
