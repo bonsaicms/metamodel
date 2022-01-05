@@ -47,6 +47,7 @@ return new class extends Migration
 
             $table->timestamps();
 
+            // TODO
 //            $table->unique([ 'left_entity_id', 'left_relationship_name' ]);
 //            $table->unique([ 'right_relationship_name', 'right_relationship_name' ]);
         });

@@ -29,7 +29,7 @@ return new class extends Migration
                 'datetime',
                 'json',
             ]);
-            $table->json('default')->nullable();
+            $table->jsonb('default')->nullable();
             $table->boolean('nullable')->default(false);
             $table->timestamps();
 
@@ -37,6 +37,8 @@ return new class extends Migration
                 ->constrained(Config::get('bonsaicms-metamodel.entityTableName'))
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+
+            $table->unique(['entity_id', 'column']);
         });
     }
 

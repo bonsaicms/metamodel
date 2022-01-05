@@ -21,8 +21,19 @@ class RelationshipFactory extends Factory
      */
     public function definition(): array
     {
+        $type = $this->faker->randomElement([
+            'oneToOne',
+            'oneToMany',
+            'manyToMany',
+        ]);
+
         return [
-            // TODO
+            'type' => $type,
+            'pivot_table' => ($type === 'manyToMany') ? $this->faker->word : null,
+            'left_foreign_key' =>  $this->faker->word,
+            'right_foreign_key' =>  $this->faker->word,
+            'left_relationship_name' =>  $this->faker->word,
+            'right_relationship_name' =>  $this->faker->word,
         ];
     }
 }

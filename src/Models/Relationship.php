@@ -13,6 +13,20 @@ class Relationship extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'type',
+        'pivot_table',
+        'left_foreign_key',
+        'right_foreign_key',
+        'left_relationship_name',
+        'right_relationship_name',
+    ];
+
+    /**
      * Get the table associated with the model.
      *
      * @return string
@@ -50,7 +64,7 @@ class Relationship extends Model
      * Getters
      */
 
-    public function getRealPivotTableNameAttribute()
+    public function getRealPivotTableNameAttribute(): string
     {
         return
             Config::get('bonsaicms-metamodel.generatedTablePrefix').
@@ -58,7 +72,7 @@ class Relationship extends Model
             Config::get('bonsaicms-metamodel.generatedTableSuffix');
     }
 
-    public function getOriginalRealPivotTableNameAttribute()
+    public function getOriginalRealPivotTableNameAttribute(): string
     {
         return
             Config::get('bonsaicms-metamodel.generatedTablePrefix').

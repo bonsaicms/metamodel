@@ -13,6 +13,16 @@ class Entity extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'table',
+    ];
+
+    /**
      * Get the table associated with the model.
      *
      * @return string
@@ -55,7 +65,7 @@ class Entity extends Model
      * Getters
      */
 
-    public function getRealTableNameAttribute()
+    public function getRealTableNameAttribute(): string
     {
         return
             Config::get('bonsaicms-metamodel.generatedTablePrefix').
@@ -63,7 +73,7 @@ class Entity extends Model
             Config::get('bonsaicms-metamodel.generatedTableSuffix');
     }
 
-    public function getOriginalRealTableNameAttribute()
+    public function getOriginalRealTableNameAttribute(): string
     {
         return
             Config::get('bonsaicms-metamodel.generatedTablePrefix').
