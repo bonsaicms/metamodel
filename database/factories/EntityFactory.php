@@ -22,11 +22,11 @@ class EntityFactory extends Factory
      */
     public function definition(): array
     {
-        $name = $this->faker->unique()->word;
+        $name = $this->faker->unique()->words(rand(1, 3), true);
 
         return [
-            'name' => Str::title($name),
-            'table' => Str::plural($name),
+            'name' => Str::studly($name),
+            'table' => Str::snake(Str::plural($name)),
         ];
     }
 }
