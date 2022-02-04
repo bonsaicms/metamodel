@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create(Config::get('bonsaicms-metamodel.entityTableName'), function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('table')->unique();
             $table->timestamps();
         });
