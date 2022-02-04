@@ -13,8 +13,10 @@ class MetamodelServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Merge config
         $this->mergeConfigFrom(
-            __DIR__.'/../config/bonsaicms-metamodel.php', 'bonsaicms-metamodel'
+            __DIR__.'/../config/bonsaicms-metamodel.php',
+            'bonsaicms-metamodel'
         );
     }
 
@@ -25,14 +27,17 @@ class MetamodelServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Publish config
         $this->publishes([
             __DIR__.'/../config/bonsaicms-metamodel.php' => config_path('bonsaicms-metamodel.php'),
         ], 'bonsaicms-metamodel-config');
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
+        // Publish migrations
         $this->publishes([
             __DIR__.'/../database/migrations/' => database_path('migrations')
         ], 'bonsaicms-metamodel-migrations');
+
+        // Load migrations
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 }
