@@ -19,7 +19,7 @@ return new class extends Migration
 
             // TODO: relationship moze byt nullable (napr. oneToOne alebo oneToMany moze byt nullable)
 
-            $table->enum('type', [
+            $table->enum('cardinality', [
                 'oneToOne',
                 'oneToMany',
                 'manyToMany',

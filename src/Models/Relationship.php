@@ -18,7 +18,7 @@ class Relationship extends Model
      * @var array
      */
     protected $fillable = [
-        'type',
+        'cardinality',
         'pivot_table',
         'left_foreign_key',
         'right_foreign_key',
