@@ -20,7 +20,7 @@ class Attribute extends Model
     protected $fillable = [
         'name',
         'column',
-        'type',
+        'data_type',
         'default',
         'nullable',
     ];

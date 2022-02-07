@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('column');
-            $table->enum('type', [
+            $table->enum('data_type', [
                 // TODO
                 'text',
                 'string',

@@ -27,7 +27,7 @@ class AttributeFactory extends Factory
         return [
             'name' => Str::title($name),
             'column' => Str::snake($name),
-            'type' => $this->faker->randomElement([
+            'data_type' => $this->faker->randomElement([
                 // TODO
                 'string',
                 'integer',
