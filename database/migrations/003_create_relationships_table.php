@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use BonsaiCms\Metamodel\Models\Relationship;
 use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
@@ -19,16 +20,12 @@ return new class extends Migration
 
             // TODO: relationship moze byt nullable (napr. oneToOne alebo oneToMany moze byt nullable)
 
-            $table->enum('cardinality', [
-                'oneToOne',
-                'oneToMany',
-                'manyToMany',
-            ]);
+            $table->enum('cardinality', Relationship::CARDINALITIES);
 
-            // NOT NULL when type is manyToMany
+            // NOT NULL when cardinality is manyToMany
             $table->string('pivot_table')->nullable();
 
-            // NOT NULL when type is manyToMany
+            // NOT NULL when cardinality is manyToMany
             $table->string('left_foreign_key')->nullable();
             $table->string('right_foreign_key');
 

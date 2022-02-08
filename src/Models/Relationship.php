@@ -12,6 +12,12 @@ class Relationship extends Model
 {
     use HasFactory;
 
+    const CARDINALITIES = [
+        'oneToOne',
+        'oneToMany',
+        'manyToMany',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
