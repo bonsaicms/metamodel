@@ -18,6 +18,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('column');
+
+            // TODO
+            // https://laravel.com/docs/9.x/migrations#available-column-types
+            // https://laravel.com/docs/9.x/eloquent-mutators#attribute-casting
             $table->enum('data_type', [
                 // TODO
                 'text',
