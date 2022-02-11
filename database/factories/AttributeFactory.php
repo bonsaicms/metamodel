@@ -33,6 +33,7 @@ class AttributeFactory extends Factory
                 'integer',
                 'boolean',
             ]),
+            'nullable' => $this->faker->boolean,
         ];
     }
 }
