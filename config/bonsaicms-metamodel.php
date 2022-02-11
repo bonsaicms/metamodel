@@ -7,6 +7,6 @@ return [
     'relationshipTableName' => 'meta_relationships',
 
     // Generated
-    'generatedTablePrefix' => 'gen_',
+    'generatedTablePrefix' => '',
     'generatedTableSuffix' => '',
 ];
