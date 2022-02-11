@@ -48,17 +48,20 @@ class Entity extends Model
 
     public function attributes(): HasMany
     {
-        return $this->hasMany(Attribute::class);
+        return $this->hasMany(Attribute::class)
+            ->orderBy('id');
     }
 
     public function leftRelationships(): HasMany
     {
-        return $this->hasMany(Relationship::class, 'left_entity_id');
+        return $this->hasMany(Relationship::class, 'left_entity_id')
+            ->orderBy('id');
     }
 
     public function rightRelationships(): HasMany
     {
-        return $this->hasMany(Relationship::class, 'right_entity_id');
+        return $this->hasMany(Relationship::class, 'right_entity_id')
+            ->orderBy('id');
     }
 
     /*
