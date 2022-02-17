@@ -12,6 +12,7 @@ class Relationship extends Model
 {
     use HasFactory;
 
+    // TODO: refactor to enum
     const CARDINALITIES = [
         'oneToOne',
         'oneToMany',
