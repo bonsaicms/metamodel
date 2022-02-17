@@ -22,6 +22,7 @@ return new class extends Migration
             // TODO
             // https://laravel.com/docs/9.x/migrations#available-column-types
             // https://laravel.com/docs/9.x/eloquent-mutators#attribute-casting
+            // Laravel 9 ma na toto tie enumy, tak to implementovat
             $table->enum('data_type', [
                 // TODO
                 'text',
@@ -31,7 +32,8 @@ return new class extends Migration
                 'date',
                 'time',
                 'datetime',
-                'json',
+                'arraylist',
+                'arrayhash',
             ]);
             $table->jsonb('default')->nullable();
             $table->boolean('nullable')->default(false);
